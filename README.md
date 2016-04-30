@@ -1,9 +1,13 @@
 #PROIECT SERVLETS
 #Enunt
 Realizati o aplicatie web bazata pe JavaServlets care sa implementeze o agenda (de telefon). Veti folosi urmatoarele cazuri de utilizare:
+
 a. utilizatorul poate adauga contacte noi an agenda;
+
 b. utilizatorul poate sterge contacte din agenda;
+
 c. utilizatorul poate cauta contacte in agenda;
+
 d. utilizatorul poate modifica contacte in agenda.
 
 #Detalii
@@ -18,7 +22,9 @@ O intrare in agenda (un contact) are urmatoarele câmpuri:
 - oras;
 - judet;
 - cod postal.
+
 Principalele OPERATII:
+
 Cele patru operatii fundamentale pe care utilizatorul le poate executa (Creare, Actualizare, stergere si Cautare) vor fi mapate pe urmatoarele URI-uri (relative la radacina aplicatiei):
 - creare → /add;
 - actualizare → /edit;
