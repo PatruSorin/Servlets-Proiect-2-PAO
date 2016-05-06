@@ -6,19 +6,21 @@
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.*;
 
 /**
  *
  * @author Patru Sorin
  */
-@WebServlet(urlPatterns = {"/AddServlet"})
-public class AddServlet extends HttpServlet {
+@WebServlet(urlPatterns = {"/DeleteServlet"})
+public class DeleteServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -29,32 +31,16 @@ public class AddServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
-    String nume;
-    String prenume ;
-    String telefon_mobil ;
-    String telefon_fix;
-    String email ;
-    String adresa;
-    String oras ;
-    String judet ;
-    String cod_postal;
-    
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        //Introducerea datelor din formular in variabile
+         //Introducerea datelor din formular in variabile
         
-        nume = request.getParameter("nume");
-        prenume = request.getParameter("prenume");
-        telefon_mobil = request.getParameter("telefon_mobil");
-        telefon_fix = request.getParameter("telefon_fix");
-        email = request.getParameter("email");
-        adresa = request.getParameter("adresa");
-        oras = request.getParameter("oras");
-        judet = request.getParameter("judet");
-        cod_postal = request.getParameter("cod_postal");
+        String nume = request.getParameter("nume");
+        String prenume = request.getParameter("prenume");
+        String telefon_mobil = request.getParameter("telefon_mobil");
+        
+        
         
         
         String url  = "jdbc:mysql://localhost:3306/agenda";
@@ -72,22 +58,38 @@ public class AddServlet extends HttpServlet {
         //Creem un statement
         Statement myStmt = myConn.createStatement();
         
-        //Introducerea datelor din variabile in baza de date
+        //Stergerea datelor din baza de date
         
-        String sql = "insert into contacte"
-                         +"(nume, prenume, telefon_mobil, telefon_fix, email, adresa, oras, judet, cod_postal)"
-                         +"values"
-                         +"('"+nume+"','"+ prenume +"','"+ telefon_mobil +"','"+ telefon_fix +"','"+ email +"','"+ adresa 
-                         +"','"+ oras +"','"+ judet +"','"+ cod_postal+"')";
+        String sql;
+          
+      
         
-        myStmt.executeUpdate(sql);
+        if( !nume.equals("")){
+            if( !prenume.equals("")){
+                sql="delete from contacte where prenume='"+ prenume +"' and nume='"+nume+"'";
+                myStmt.executeUpdate(sql);
+                }
+            else{
+                sql="delete from contacte where nume='"+nume+"'";
+                myStmt.executeUpdate(sql);
+            }
+                
+            }
+        else if( !prenume.equals("")){
+            sql="delete from contacte where prenume='"+ prenume +"'";
+            myStmt.executeUpdate(sql);
+        }
+        
+        if( !telefon_mobil.equals(""))
+            {     
+            sql="delete from contacte where telefon_mobil='"+ telefon_mobil +"'" ;
+            myStmt.executeUpdate(sql);
+            }
+        
         }
         catch(Exception exc){
         
         }
-        
-        
-        
         
         
         //Mesaj afisat utilizatorului
@@ -97,14 +99,12 @@ public class AddServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AddServlet</title>");            
+            out.println("<title>Servlet DeleteServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Datele au fost adaugate cu succes!</h1>");
+            out.println("<h1>Datele au fost sterse cu succes!</h1>");
             out.println("</body>");
             out.println("</html>");
-        
-        
         }
     }
 
@@ -135,8 +135,6 @@ public class AddServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-         
-
     }
 
     /**
