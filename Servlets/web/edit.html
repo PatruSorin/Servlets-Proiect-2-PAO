@@ -4,8 +4,65 @@
 </head>
 <body>
 <center>
-<form method=GET action="FirstServlet">
-<input type="Submit" value="Click me!">
+<form method=GET action="EditServlet">
+    
+    <div style="border: 3px solid red">
+        
+        <h1>Ce contact doriti sa modificati:</h1>
+        
+       <br/>
+        <p>Nume</p>
+        <input type="text" name="nume_search" required>
+
+        <br/>
+        <p>Prenume</p>
+        <input type="text" name="prenume_search" required> 
+        <br><br>
+    </div>
+    
+    <div style="border: 1px solid black">
+        <h1>Ce doriti sa modificati in contact:</h1>
+        <br/>
+        <p>Nume</p>
+        <input type="text" name="nume">
+
+        <br/>
+        <p>Prenume</p>
+        <input type="text" name="prenume">
+
+        <br/>
+        <p>Telefon mobil</p>
+        <input type="text" name="telefon_mobil">
+
+        <br/>
+        <p>Telefon fix</p>
+        <input type="text" name="telefon_fix">
+
+        <br/>
+        <p>Email</p>
+        <input type="text" name="email">
+
+        <br/>
+        <p>Adresa</p>
+        <input type="text" name="adresa">
+
+        <br/>
+        <p>Oras</p>
+        <input type="text" name="oras">
+
+        <br/>
+        <p>Judet</p>
+        <input type="text" name="judet">
+
+        <br/>
+        <p>Cod postal</p>
+        <input type="text" name="cod_postal">
+        <br><br>
+        <p> </p>
+    </div>
+    
+    <br><br>
+    <input type="Submit" value="Submit!">
 </form>
 </center>
 </body>
