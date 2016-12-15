@@ -1,5 +1,5 @@
 #PROIECT SERVLETS
-#Enunt
+##Enunt
 Realizati o aplicatie web bazata pe JavaServlets care sa implementeze o agenda (de telefon). Veti folosi urmatoarele cazuri de utilizare:
 
 a. utilizatorul poate adauga contacte noi an agenda;
@@ -10,7 +10,7 @@ c. utilizatorul poate cauta contacte in agenda;
 
 d. utilizatorul poate modifica contacte in agenda.
 
-#Detalii
+##Detalii
 Pentru CONTACT se vor avea in vedere urmatoarele campuri:
 O intrare in agenda (un contact) are urmatoarele câmpuri:
 - nume (obligatoriu);
@@ -31,8 +31,8 @@ Cele patru operatii fundamentale pe care utilizatorul le poate executa (Creare, 
 - stergere → /delete;
 - cautare → /search.
 
-#Tratarea erorilor
+##Tratarea erorilor
 Operatiile invalide (cum ar fi inserarea sau modificarea unui contact care nu are câmpurile obligatorii completate) vor fi detectate si se vor afisa mesaje de eroare corespunzatoare, nepericlitând integritatea agendei (i. e. nu vor exista contacte pe jumatate inserate sau pe jumatate modificate etc.).
 
-#Informatii suplimentare
+##Informatii suplimentare
 Daca e completat mai mult de un singur câmp se va folosi operatorul SAU logic (i. e. se va cauta dupa nume SAU dupa email etc.). Pentru stocarea contactelor se va folosi o baza de date (la alegere: Microsoft Access, MySQL, SQLite etc.) accesata prin intermediul tehnologiei JDBC.
